@@ -11,7 +11,7 @@ Gaussian Process Regression, Random Forest and Prophet.
   price changes.
 - **Model predictions** - pick a crop, feature columns, model, forecast horizon (1-10 years)
   and a future-driver scenario (`trend` or `constant`). Results include backtest metrics
-  (R2, RMSE, MAE, MAPE), a history + forecast chart and a CSV download.
+  (R², RMSE, MAE, MAPE), a history + forecast chart and a CSV download.
 - **Data-quality notes** surfaced directly in the app.
 
 ## Dataset
@@ -36,16 +36,16 @@ Known issues to verify against the original source before drawing conclusions:
 
 ```
 climate-food-supply-kenya/
-|-- app.py                  # Streamlit entry point
-|-- data/data.csv           # Dataset
-|-- src/
-|   |-- charts.py           # Plotly figure builders
-|   |-- data.py             # Loading, cleaning and feature engineering
-|   `-- models.py           # GPR / Random Forest / Prophet forecasting
-|-- tests/test_data.py      # Data-loader tests
-|-- .streamlit/config.toml  # Theme
-|-- requirements.txt        # Pinned runtime dependencies
-`-- requirements-dev.txt    # Adds pytest
+├── streamlit_app.py        # Streamlit entry point (Streamlit Cloud default)
+├── data/data.csv           # Dataset
+├── src/
+│   ├── charts.py           # Plotly figure builders
+│   ├── data.py             # Loading, cleaning and feature engineering
+│   └── models.py           # GPR / Random Forest / Prophet forecasting
+├── tests/test_data.py      # Data-loader tests
+├── .streamlit/config.toml  # Theme
+├── requirements.txt        # Pinned runtime dependencies
+└── requirements-dev.txt    # Adds pytest
 ```
 
 ## Setup and run
@@ -54,10 +54,21 @@ climate-food-supply-kenya/
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-streamlit run app.py
+streamlit run streamlit_app.py
 ```
 
 Then open <http://localhost:8501>.
+
+## Deploy on Streamlit Community Cloud
+
+1. Go to <https://share.streamlit.io> -> **Create app** -> **Deploy a public app from GitHub**.
+2. Repository: `KiprutoKE/climate-food-supply-kenya`, branch: `main`.
+3. **Main file path:** `streamlit_app.py` (the default the form pre-fills).
+4. Optionally pick Python 3.11+ under **Advanced settings**, then click **Deploy**.
+
+`requirements.txt` sits at the repository root, so Streamlit installs the pinned
+dependencies automatically. The first build takes a few minutes because Prophet
+pulls in `cmdstanpy`; the app still starts without Prophet if that install fails.
 
 ## Tests
 
