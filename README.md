@@ -57,7 +57,7 @@ pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
-Then open <http://localhost:8501>.
+Then open https://climate-food-supply-chain-in-kenya.streamlit.app/
 
 ## Deploy on Streamlit Community Cloud
 
