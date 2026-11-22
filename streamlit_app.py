@@ -23,7 +23,7 @@ from src.models import (
 
 st.set_page_config(
     page_title="Climate & Food Supply Dashboard",
-    page_icon="🌍",
+    page_icon="\U0001F30D",
     layout="wide",
 )
 
@@ -36,7 +36,7 @@ def get_data() -> pd.DataFrame:
 DATA = get_data()
 
 
-@st.cache_data(show_spinner="Training model…")
+@st.cache_data(show_spinner="Training model...")
 def run_forecast(model_type: str, target: str, features: tuple[str, ...], horizon: int, method: str):
     if model_type == "Gaussian Process Regression":
         result = forecast_gpr(DATA, target, features, horizon, method)
@@ -55,7 +55,7 @@ def main() -> None:
     st.markdown(
         """
         <div style="display:flex;align-items:center;gap:16px;margin-bottom:6px;">
-          <span style="font-size:2.6rem;">🌱</span>
+          <span style="font-size:2.6rem;">\U0001F331</span>
           <h1 style="color:#2e8b57;margin:0;">Influences of Climatic Patterns on Food Supply in Kenya</h1>
         </div>
         <p style="color:#555;margin-top:0;">Explore historical crop prices and climate variables, then forecast the next few years.</p>
@@ -172,7 +172,7 @@ def main() -> None:
             """
             - Rice prices are recorded as 0 for 2002-2020, so rice forecasts are unreliable.
             - The 2011 rainfall value (9 mm/year) looks like a data-entry error - verify it against the source.
-            - Temperature varies only between 24-27 °C, so it carries little signal.
+            - Temperature varies only between 24-27 C, so it carries little signal.
             """
         )
 
