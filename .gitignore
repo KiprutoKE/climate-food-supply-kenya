@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Notebooks and tests
+.ipynb_checkpoints/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
